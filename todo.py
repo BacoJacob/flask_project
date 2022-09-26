@@ -12,9 +12,8 @@ def hello():
 
 @app.route('/addTodo', methods=['POST'])
 def addTodo():
-    todoItem = request.form['todoItem']
-    print(todoItem)
-    return(todoItem)
+    todoList = request.form['todoItem']
+    return render_template('home.html', todoList=todoList)
 
 
 
