@@ -3,16 +3,17 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-
+todoList = []
 
 
 @app.route("/")
 def hello():
-    return render_template('home.html')
+    return render_template('home.html', todoList=todoList)
 
 @app.route('/addTodo', methods=['POST'])
 def addTodo():
-    todoList = request.form['todoItem']
+    todoItem = request.form['todoItem']
+    todoList.append(todoItem)
     return render_template('home.html', todoList=todoList)
 
 
